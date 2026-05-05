@@ -27,13 +27,12 @@ print("Name: " + player_name)
 print("HP: " + str(player["hp"]))
 print("-------------------------------")
 
+print("Will you enter the Dungeon?")
+choice = input("Select your choice (1) Yes or (2) No ")
 #Start of Dungeon Crawler
 while True: 
-    print("Will you enter the Dungeon?")
-    choice = input("Select your choice (1) Yes or (2) No ")
     
     if choice == '1':
-        print("Goodluck oh brave " + player_name + "!")
         
         enemy_name = random.choice(list(enemies.keys()))
         enemy = enemies[enemy_name]
@@ -73,9 +72,8 @@ while True:
                     continue
                 elif go_deeper == "2":
                     print(player_name + " I see you're returning with a tucked tail!")
-                    
+                    break
                 break
-            
             # Enemy's turn
             enemy_dmg = random.randint(1, 10)
             player_hp -= enemy_dmg
@@ -83,9 +81,10 @@ while True:
 
             if player_hp <= 0:
                 print("You have been defeated...")
-                try_again = input("Would you like to try again?: (1) Yes (2) No: ")
-                if try_again == "1":
-                    continue
-                elif try_again == "2":
-                    break
-                print("-------------------------------")
+                
+        try_again = input("Would you like to try again?: (1) Yes (2) No: ")
+        if try_again == "1":
+            continue   
+        elif try_again == "2":
+            print("-------------------------------")
+            break
