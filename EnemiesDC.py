@@ -4,7 +4,7 @@ import random
 # List for enemies
 enemies = ["Goblin", "Rat", "Skeleton", "Ghost", "HobGob"]
 
-#Enemy health
+#Enemy health, hp and dmg
 enemies = {
     "Goblin": {"hp": 20, "dmg": 5},
     "Rat": {"hp": 15, "dmg": 3}, 
