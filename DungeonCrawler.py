@@ -7,7 +7,6 @@ player_name = input("Tell me, what is your name? ")
 player = {
     "name": player_name,
     "hp": 25,
-    "dmg": 4,
 }
 
 # List for enemies
@@ -26,14 +25,12 @@ print("-------------------------------")
 print("Below are your player stats:")
 print("Name: " + player_name)
 print("HP: " + str(player["hp"]))
-print("Damage: " + str(player["dmg"]))
 print("-------------------------------")
 
 #Start of Dungeon Crawler
 while True: 
     print("Will you enter the Dungeon?")
-    print("\n1.Yes\n2.No")    
-    choice = input("Select your choice 1 or 2: ")
+    choice = input("Select your choice (1) Yes or (2) No ")
     
     if choice == '1':
         print("You will now enter the Dungeon!")
@@ -41,35 +38,39 @@ while True:
         enemy_name = random.choice(list(enemies.keys()))
         enemy = enemies[enemy_name]
 
-
         print("-------------------------------")
         print("You've encountered a " + enemy_name)
         print("HP: " + str(enemy["hp"]))
-        print("Damage: " + str(enemy["dmg"]))
         print(" ")
         print("Name: " + player_name)
         print("HP: " + str(player["hp"]))
-        print("Damage: " + str(player["dmg"]))
         print("-------------------------------")
 
-        while True:
-            print("Would you like to 1.Fight or 2.Flee?")
-            print("\n1.Fight\n2.Flee")
-            choice == input("**What is your decision?:** ")
-    
-            if choice == '1':
-                print("You fight the " + enemy_name)
-                print(player_name + " deals 4 damage to " + enemy_name)
-                player_dmg = str(player["dmg"])
-                update_ehp = str(enemy["hp"])
-                dmg_dealt = int(update_ehp) - int(player_dmg)
-                print(enemy_name + " now has " + str(dmg_dealt) + " HP left!")
-                print("The Rat lunges at " + player_name + "!")
-                enemy_dmg = str(enemy["dmg"])
-                update_php = str(player["hp"])
-                dmg_taken = int(update_php) - int(enemy_dmg)
-                print(player_name + " has taken " + str(enemy["dmg"]) + " points of damage!")
-            else:
-                print("Your cowardice is amusing.")
-            break
-        break
+        player_hp = int(str(player["hp"]))
+        enemy_hp = int(str(enemy["hp"]))
+
+        while player_hp > 0 and enemy_hp > 0:
+            print(f"\nYour HP: {player_hp} | Enemy HP: {enemy_hp}")
+            action = input("Choose action: (1) Attack (2) Heal: ")
+
+            if action == "1":
+                damage = random.randint(1, 10)
+                enemy_hp -= damage
+                print(f"You dealt {damage} damage!")
+            elif action == "2":
+                heal = random.randint(5, 10)
+                player_hp += heal
+                print(f"You healed for {heal} HP!")
+        
+            # Check if enemy died before it can counter-attack
+            if enemy_hp <= 0:
+                print("The enemy was defeated!")
+                break
+
+            # Enemy's turn
+            enemy_dmg = random.randint(1, 10)
+            player_hp -= enemy_dmg
+            print(f"The enemy hit you for {enemy_dmg} damage!")
+
+            if player_hp <= 0:
+                print("You have been defeated...")
