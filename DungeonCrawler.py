@@ -9,9 +9,6 @@ player = {
     "hp": 25,
 }
 
-# List for enemies
-enemies = ["Goblin", "Rat", "Skeleton", "Ghost", "HobGob"]
-
 #Enemy health, hp and dmg
 enemies = {
     "Goblin": {"hp": 20},
