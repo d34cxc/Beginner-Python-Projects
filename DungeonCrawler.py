@@ -14,11 +14,11 @@ enemies = ["Goblin", "Rat", "Skeleton", "Ghost", "HobGob"]
 
 #Enemy health, hp and dmg
 enemies = {
-    "Goblin": {"hp": 20, "dmg": 5},
-    "Rat": {"hp": 15, "dmg": 3}, 
-    "Skeleton": {"hp": 20, "dmg": 7},
-    "Ghost": {"hp": 25, "dmg": 8},
-    "HobGob": {"hp": 50, "dmg": 12}
+    "Goblin": {"hp": 20},
+    "Rat": {"hp": 15}, 
+    "Skeleton": {"hp": 20},
+    "Ghost": {"hp": 25},
+    "HobGob": {"hp": 50}
 }
 
 print("-------------------------------")
@@ -33,7 +33,7 @@ while True:
     choice = input("Select your choice (1) Yes or (2) No ")
     
     if choice == '1':
-        print("You will now enter the Dungeon!")
+        print("Goodluck oh brave " + player_name + "!")
         
         enemy_name = random.choice(list(enemies.keys()))
         enemy = enemies[enemy_name]
@@ -65,8 +65,17 @@ while True:
             # Check if enemy died before it can counter-attack
             if enemy_hp <= 0:
                 print("The enemy was defeated!")
+                print("-------------------------------")
+                
+                go_deeper = input("Will you traverse deeper into the dungeon? (1) Yes (2) No: ")
+                if go_deeper == "1":
+                    print(player_name + " you are a brave soul!")
+                    continue
+                elif go_deeper == "2":
+                    print(player_name + " I see you're returning with a tucked tail!")
+                    
                 break
-
+            
             # Enemy's turn
             enemy_dmg = random.randint(1, 10)
             player_hp -= enemy_dmg
@@ -74,3 +83,9 @@ while True:
 
             if player_hp <= 0:
                 print("You have been defeated...")
+                try_again = input("Would you like to try again?: (1) Yes (2) No: ")
+                if try_again == "1":
+                    continue
+                elif try_again == "2":
+                    break
+                print("-------------------------------")
