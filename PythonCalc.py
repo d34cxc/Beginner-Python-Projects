@@ -1,38 +1,11 @@
-#Just a simple calculator created with python.
+#Just a simple tip calculator created with python.
 
+bill_amount = float(input("Please enter the bill amount: $"))
+tip_amount = int(input("Please enter the percentage you'd like to tip: "))
+tip_value = tip_amount / 100
+tipped_value = tip_value * bill_amount
+response = "The tip you'd like leave is: $" + str(tipped_value)
+total = bill_amount + tipped_value
 
-
-
-def add(n1, n2):
-	return n1 + n2
-
-def sub(n1, n2):
-	return n1 - n2
-
-def multi(n1, n2):
-	return n1 * n2
-
-def div(n1, n2):
-	return n1 / n2
-
-print ("Please select operation -\n"
-	   "1. Add\n"
-	   "2. Subtract\n"
-	   "3. Multiply\n"
-	   "4. Division\n")
-
-sel = int(input("Select operation (1-4): "))
-
-n1 = float(input("Enter first number: "))
-n2 = float(input("Enter second number "))
-
-if sel == 1:
-	print(n1, "+", n2, "=", add(n1, n2))
-elif sel == 2:
-	print(n1, "-", n2, "=", sub(n1, n2))
-elif sel == 3:
-	print(n1, "*", n2, "=", multi(n1, n2))
-elif sel == 4:
-	print(n1, "/", n2, "=", div(n1, n2))
-else:
-	print("Invalid input.")
+print("Tip: $" + str(round(tipped_value, 2)))
+print("Total: $" + str(round(total, 2)))
