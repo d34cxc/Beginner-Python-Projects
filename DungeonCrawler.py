@@ -55,7 +55,7 @@ while True:
         while True:
             print("Would you like to 1.Fight or 2.Flee?")
             print("\n1.Fight\n2.Flee")
-            choice == input("What is your decision?: ")
+            choice == input("**What is your decision?:** ")
     
             if choice == '1':
                 print("You fight the " + enemy_name)
@@ -64,6 +64,11 @@ while True:
                 update_ehp = str(enemy["hp"])
                 dmg_dealt = int(update_ehp) - int(player_dmg)
                 print(enemy_name + " now has " + str(dmg_dealt) + " HP left!")
+                print("The Rat lunges at " + player_name + "!")
+                enemy_dmg = str(enemy["dmg"])
+                update_php = str(player["hp"])
+                dmg_taken = int(update_php) - int(enemy_dmg)
+                print(player_name + " has taken " + str(enemy["dmg"]) + " points of damage!")
             else:
                 print("Your cowardice is amusing.")
             break
