@@ -65,26 +65,31 @@ while True:
             if enemy_hp <= 0:
                 print("The enemy was defeated!")
                 print("-------------------------------")
-                
-                go_deeper = input("Will you traverse deeper into the dungeon? (1) Yes (2) No: ")
-                if go_deeper == "1":
-                    print(player_name + " you are a brave soul!")
-                    continue
-                elif go_deeper == "2":
-                    print(player_name + " I see you're returning with a tucked tail!")
-                    break
                 break
-            # Enemy's turn
+                
+             # Enemy's turn
             enemy_dmg = random.randint(1, 10)
             player_hp -= enemy_dmg
             print(f"The enemy hit you for {enemy_dmg} damage!")
-
-            if player_hp <= 0:
-                print("You have been defeated...")
-                
-        try_again = input("Would you like to try again?: (1) Yes (2) No: ")
-        if try_again == "1":
-            continue   
-        elif try_again == "2":
-            print("-------------------------------")
-            break
+            
+        if enemy_hp <= 0:
+            go_deeper = input("Will you traverse deeper into the dungeon? (1) Yes (2) No: ")
+            if go_deeper == "1":
+                print(player_name + " you are a brave soul!")
+                if go_deeper == "1":
+                    choice = "1"
+                    continue
+                else:
+                    break
+ 
+        if player_hp <= 0:
+            print("You have been defeated...")
+            try_again = input("Would you like to try again?: (1) Yes (2) No: ")
+            if try_again == "1":
+                player["hp"] = 25
+                choice = "1"
+                continue
+            else:
+                break
+        print("-------------------------------")
+        break
